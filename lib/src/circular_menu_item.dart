@@ -70,7 +70,7 @@ class CircularMenuItem extends StatelessWidget {
         shape: BoxShape.circle,
       ),
       child: ClipOval(
-        child: widget != null ? widget : Material(
+        child: Material(
           color: color ?? Theme
               .of(context)
               .primaryColor,
@@ -78,7 +78,7 @@ class CircularMenuItem extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(padding),
               child: animatedIcon == null
-                  ? Icon(
+                  ? widget != null ? widget : Icon(
                 icon,
                 size: iconSize,
                 color: iconColor ?? Colors.white,
