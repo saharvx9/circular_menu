@@ -87,7 +87,7 @@ class CircularMenuState extends State<CircularMenu>
   late Animation<double> _animation;
   bool _isOpen = false;
 
-  bool get isOpen() => _isOpen;
+  bool get isOpen => _isOpen;
 
   /// forward animation
   void forwardAnimation() {
