@@ -85,6 +85,9 @@ class CircularMenuState extends State<CircularMenu>
   double? _startAngle;
   late int _itemsCount;
   late Animation<double> _animation;
+  bool _isOpen = false;
+
+  bool get isOpen() => _isOpen;
 
   /// forward animation
   void forwardAnimation() {
@@ -103,7 +106,21 @@ class CircularMenuState extends State<CircularMenu>
       vsync: this,
       duration: widget.animationDuration,
     )..addListener(() {
-        setState(() {});
+      switch(_animationController.status){
+        case AnimationStatus.dismissed:
+          break;
+        case AnimationStatus.forward:
+          _isOpen = true;
+          break;
+        case AnimationStatus.reverse:
+          _isOpen = false;
+          break;
+        case AnimationStatus.completed:
+          break;
+      }
+        setState(() {
+
+        });
       });
     _animation = Tween(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
